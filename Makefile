@@ -6,7 +6,7 @@
 #    By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/11 16:45:41 by hkim2             #+#    #+#              #
-#    Updated: 2022/02/11 17:02:44 by hkim2            ###   ########.fr        #
+#    Updated: 2022/02/11 18:06:18 by hkim2            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ RM = rm -f
 
 LIB_DIR = ./lib/
 
-SRCS = main.c\
+FUNC = main.c\
 
-#SRCS = $(addsuffix .c, $(FUNC))
+SRCS = $(addprefix src/, $(FUNC))
 #OBJS = $(addsuffix .o, $(FUNC))
 
 .c.o: $(SRCS)
