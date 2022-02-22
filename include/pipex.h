@@ -6,7 +6,7 @@
 /*   By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:27:16 by hkim2             #+#    #+#             */
-/*   Updated: 2022/02/11 18:36:11 by hkim2            ###   ########.fr       */
+/*   Updated: 2022/02/22 17:45:42 by hkim2            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "../lib/libft.h"
-# include "../include/error.h"
+# include "./error.h"
 
 #endif
