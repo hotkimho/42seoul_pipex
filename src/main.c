@@ -6,7 +6,7 @@
 /*   By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:03:06 by hkim2             #+#    #+#             */
-/*   Updated: 2022/02/11 20:26:25 by hkim2            ###   ########.fr       */
+/*   Updated: 2022/02/22 18:57:49 by hkim2            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,63 @@
 #include <stdio.h>
 
 
-
-void	check_arg(int argc, char **argv)
+char	**get_cmd_path(char **env)
 {
-	argc = 0;
-	argv = NULL;
+	int		i;
+
+	i = 0;
+	while (env[i])
+	{
+		if (ft_strncmp(env[i], "PATH=", 5) == 0)
+			break;
+		i++;
+	}
+	if (env[i] == NULL)
+		error_msg("CMD PARSE ERROR");
+	return (ft_split(env[i] + 5, ':'));
 }
 
-/*
-정리할 함수
-access
-unlink
-waitpid
-wait
-pipe
-dup
-dup2
-execve
-fork
-perror
-strerror
-*/
-
-int	main(int argc, char **argv)
+int		check_file(char **cmd_path, char *cmd)
 {
-	for (int i = 0; i < argc; i++)
-		printf("%s\n", argv[i]);
-	char **new_arg = (char **) malloc(sizeof(char *) * 5);
-	new_arg[0] = "ls";
-	new_arg[1] = argv[1];
-	new_arg[2] = argv[2];
-	new_arg[3] = argv[3];
-	new_arg[4] = NULL;
+	int	i;
+	char	*str;
 	
-	//printf("시작\n");
-	execve("/bin/ls", new_arg, NULL);
-	return (0);
+	i = 0;
+	while (cmd_path[i])
+	{
+		str = ft_strjoin(cmd_path[i], cmd);
+		printf("%s\n", str);
+		if (access(str, F_OK) == 0)
+		{
+			printf("find it\n");
+			return 0;
+		}
+		free(str);
+		i++;
+	}
+	return -1;
+}
+
+void	pipex(char **argv, char **env)
+{
+	char	**cmd_path;
+
+	argv=NULL;
+	cmd_path = get_cmd_path(env);
+	check_file(cmd_path, "/ls");
+}
+
+void	validation(int argc)
+{
+	
+}
+
+int	main(int argc, char **argv, char **env)
+{
+	pipex(argv, env);
+	//if (argc != 5)
+	//	error_msg("Invalid arg");
+	argc=1;
+	for (int i = 0; i< argc; i++)
+		printf("%s\n", argv[i]);
 }
