@@ -6,7 +6,7 @@
 /*   By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:27:16 by hkim2             #+#    #+#             */
-/*   Updated: 2022/02/22 17:45:42 by hkim2            ###   ########.fr       */
+/*   Updated: 2022/02/23 19:51:09 by hkim2            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,17 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <fcntl.h>
 # include "../lib/libft.h"
 # include "./error.h"
+# include "get_next_line.h"
+
+typedef struct s_pipeinfo
+{
+	int		fd[2];
+	int		r_fd;
+	int		w_fd;
+	char	**cmd_path;
+}			t_pipeinfo;
 
 #endif
