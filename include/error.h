@@ -6,7 +6,7 @@
 /*   By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 18:34:09 by hkim2             #+#    #+#             */
-/*   Updated: 2022/02/22 17:46:58 by hkim2            ###   ########.fr       */
+/*   Updated: 2022/02/23 17:57:57 by hkim2            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define ERROR_H
 
 # define EXIT_FAILURE 1
+# include <stdio.h>
 # include "../lib/libft.h"
+
 void	error_msg(char *message);
+void	perror_msg(char *message);
 #endif
