@@ -6,7 +6,7 @@
 /*   By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:27:16 by hkim2             #+#    #+#             */
-/*   Updated: 2022/02/23 19:51:09 by hkim2            ###   ########.fr       */
+/*   Updated: 2022/02/25 16:32:46 by hkim2            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_pipeinfo
 	int		r_fd;
 	int		w_fd;
 	char	**cmd_path;
+	char	**cmds;
 }			t_pipeinfo;
 
 #endif
