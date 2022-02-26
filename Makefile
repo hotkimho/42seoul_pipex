@@ -6,7 +6,7 @@
 #    By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/11 16:45:41 by hkim2             #+#    #+#              #
-#    Updated: 2022/02/26 17:48:17 by hkim2            ###   ########.fr        #
+#    Updated: 2022/02/26 18:29:41 by hkim2            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,14 @@ FUNC =	main.c\
 	
 
 SRCS = $(addprefix src/, $(FUNC))
-#OBJS = $(addsuffix .o, $(FUNC))
+OBJS = $(SRCS:c=o)
 
 .c.o: $(SRCS)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(NAME) : $(OBJS)
 	make -C $(LIB_DIR)
-	$(CC) $(CFLAGS) $(SRCS) -L $(LIB_DIR) -lft -o $(NAME)
+	$(CC) $(CFLAGS) -L $(LIB_DIR) -lft -o $(NAME) $(OBJS) 
 
 all : $(NAME)
 
