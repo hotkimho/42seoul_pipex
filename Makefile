@@ -6,7 +6,7 @@
 #    By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/11 16:45:41 by hkim2             #+#    #+#              #
-#    Updated: 2022/02/23 18:47:00 by hkim2            ###   ########.fr        #
+#    Updated: 2022/02/26 17:48:17 by hkim2            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,11 @@ RM = rm -f
 LIB_DIR = ./lib/
 
 FUNC =	main.c\
+		child.c\
 		error.c\
-		gnl/get_next_line.c\
-		gnl/get_next_line_utils.c\
+		parser.c\
+		pipe.c\
+		read_file.c\
 	
 
 SRCS = $(addprefix src/, $(FUNC))
