@@ -6,11 +6,11 @@
 /*   By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 18:36:15 by hkim2             #+#    #+#             */
-/*   Updated: 2022/02/23 17:58:25 by hkim2            ###   ########.fr       */
+/*   Updated: 2022/02/26 17:57:15 by hkim2            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/error.h"
+#include "../include/pipex.h"
 
 void	error_msg(char *message)
 {
@@ -23,4 +23,22 @@ void	perror_msg(char *message)
 {
 	perror(message);
 	exit(1);
+}
+
+void	close_all_fd(t_pipeinfo *pipeinfo)
+{
+	if (pipeinfo->fd[0])
+		close(pipeinfo->fd[0]);
+	if (pipeinfo->fd[1])
+		close(pipeinfo->fd[1]);
+	if (pipeinfo->r_fd)
+		close(pipeinfo->r_fd);
+	if (pipeinfo->w_fd)
+		close(pipeinfo->w_fd);
+}
+
+void	validation(int argc)
+{
+	if (argc != 5)
+		error_msg("Invalid arg");
 }
