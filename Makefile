@@ -6,7 +6,7 @@
 #    By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/11 16:45:41 by hkim2             #+#    #+#              #
-#    Updated: 2022/02/26 18:29:41 by hkim2            ###   ########.fr        #
+#    Updated: 2022/03/05 20:11:23 by hkim2            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,22 +25,32 @@ FUNC =	main.c\
 		parser.c\
 		pipe.c\
 		read_file.c\
-	
+
+BONUS_FUNC =	main_bonus.c\
+				child_bonus.c\
+				error_bonus.c\
+				parser_bonus.c\
+				pipe_bonus.c\
+				read_file_bonus.c\
 
 SRCS = $(addprefix src/, $(FUNC))
 OBJS = $(SRCS:c=o)
 
-.c.o: $(SRCS)
-	$(CC) $(CFLAGS) -c -o $@ $<
+BONUS_SRCS = $(addprefix bonus/, $(BONUS_FUNC))
+BONUS_OBJS = $(BONUS_SRCS:c=o)
 
 $(NAME) : $(OBJS)
 	make -C $(LIB_DIR)
 	$(CC) $(CFLAGS) -L $(LIB_DIR) -lft -o $(NAME) $(OBJS) 
 
+bonus :	$(BONUS_OBJS)
+	make -C $(LIB_DIR)
+	$(CC) $(CFLAGS) -L $(LIB_DIR) -lft -o $(NAME) $(BONUS_OBJS)
+
 all : $(NAME)
 
 clean :
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean : clean
 	$(RM) $(NAME)
