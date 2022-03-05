@@ -6,7 +6,7 @@
 /*   By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 17:32:12 by hkim2             #+#    #+#             */
-/*   Updated: 2022/02/26 17:34:25 by hkim2            ###   ########.fr       */
+/*   Updated: 2022/03/05 17:47:15 by hkim2            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	get_cmd_path(t_pipeinfo *pipeinfo, char **env)
 
 int	find_cmd_index(char **cmd_path, char *cmd)
 {
-	int	i;
+	int		i;
 	char	*str;
-	
+
 	i = 0;
 	while (cmd_path[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 18:36:15 by hkim2             #+#    #+#             */
-/*   Updated: 2022/02/26 17:57:15 by hkim2            ###   ########.fr       */
+/*   Updated: 2022/03/05 17:46:56 by hkim2            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	error_msg(char *message)
 	exit(1);
 }
 
-void	perror_msg(char *message)
+void	perror_msg(char *message, int code)
 {
 	perror(message);
-	exit(1);
+	exit(code);
 }
 
 void	close_all_fd(t_pipeinfo *pipeinfo)

@@ -6,7 +6,7 @@
 /*   By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 17:42:06 by hkim2             #+#    #+#             */
-/*   Updated: 2022/02/26 17:56:45 by hkim2            ###   ########.fr       */
+/*   Updated: 2022/03/05 17:49:38 by hkim2            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	create_pipe(t_pipeinfo *pipeinfo)
 {
 	if (pipe(pipeinfo->fd) == -1)
-		perror_msg("CREATE PIPE ERROR");
+		perror_msg("CREATE PIPE ERROR ", 1);
 }
 
 void	loop_fork(t_pipeinfo *pipeinfo, int argc, char **argv, char **env)
@@ -28,13 +28,13 @@ void	loop_fork(t_pipeinfo *pipeinfo, int argc, char **argv, char **env)
 	{
 		pid = fork();
 		if (pid == -1)
-			perror_msg("FORK ERROR");
+			perror_msg("FORK ERROR", 1);
 		if (pid == 0 && i == 2)
 			read_child_process(pipeinfo, argv, env);
 		else if (pid == 0 && i == (argc - 2))
-			write_child_process(pipeinfo, argv, env, i);
+			write_process(pipeinfo, argv, env, i);
 		else if (pid == 0)
-			processing_child(pipeinfo, argv, env, i);
+			child_process(pipeinfo, argv, env, i);
 		else if (pid)
 		{
 			waitpid(pid, NULL, WNOHANG);
