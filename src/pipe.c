@@ -6,7 +6,7 @@
 /*   By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 17:42:06 by hkim2             #+#    #+#             */
-/*   Updated: 2022/03/05 17:49:38 by hkim2            ###   ########.fr       */
+/*   Updated: 2022/03/06 18:19:46 by hkim2            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	loop_fork(t_pipeinfo *pipeinfo, int argc, char **argv, char **env)
 	i = 2;
 	while (i < argc - 1)
 	{
+		create_pipe(pipeinfo);
 		pid = fork();
 		if (pid == -1)
 			perror_msg("FORK ERROR", 1);
@@ -33,13 +34,9 @@ void	loop_fork(t_pipeinfo *pipeinfo, int argc, char **argv, char **env)
 			read_child_process(pipeinfo, argv, env);
 		else if (pid == 0 && i == (argc - 2))
 			write_process(pipeinfo, argv, env, i);
-		else if (pid == 0)
-			child_process(pipeinfo, argv, env, i);
 		else if (pid)
-		{
-			waitpid(pid, NULL, WNOHANG);
-			i++;
-		}
+			parent_process(pipeinfo, pid);
+		i++;
 	}
 }
 
@@ -49,6 +46,5 @@ void	pipex(t_pipeinfo *pipeinfo, int argc, char **argv, char **env)
 	get_cmd_path(pipeinfo, env);
 	read_input_file(pipeinfo, argv[1]);
 	read_output_file(pipeinfo, argv[argc - 1]);
-	create_pipe(pipeinfo);
 	loop_fork(pipeinfo, argc, argv, env);
 }

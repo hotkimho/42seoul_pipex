@@ -6,7 +6,7 @@
 /*   By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 18:22:07 by hkim2             #+#    #+#             */
-/*   Updated: 2022/03/05 18:54:48 by hkim2            ###   ########.fr       */
+/*   Updated: 2022/03/06 18:03:13 by hkim2            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ void	close_all_fd(t_pipeinfo *pipeinfo)
 
 void	validation(int argc)
 {
-	if (argc <= 3)
+	if (argc < 5)
 		error_msg("Invalid arg");
 }

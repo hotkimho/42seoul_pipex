@@ -6,7 +6,7 @@
 /*   By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 18:21:24 by hkim2             #+#    #+#             */
-/*   Updated: 2022/03/06 17:06:29 by hkim2            ###   ########.fr       */
+/*   Updated: 2022/03/06 18:06:03 by hkim2            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	parent_process(t_pipeinfo *pipeinfo, int pid)
 	close(pipeinfo->fd[1]);
 	dup2(pipeinfo->fd[0], STDIN_FILENO);
 	close(pipeinfo->fd[0]);
-	waitpid(pid, NULL, 0);
+	waitpid(pid, NULL, WNOHANG);
 }
 
 void	read_child_process(t_pipeinfo *pipeinfo, char **argv, char **env)
@@ -31,6 +31,7 @@ void	read_child_process(t_pipeinfo *pipeinfo, char **argv, char **env)
 	dup2(pipeinfo->fd[1], STDOUT_FILENO);
 	close(pipeinfo->fd[1]);
 	dup2(pipeinfo->r_fd, STDIN_FILENO);
+	close(pipeinfo->r_fd);
 	if (execve(cmd, cmd_arg, env) == -1)
 		perror_msg("command not found: ", 127);
 }

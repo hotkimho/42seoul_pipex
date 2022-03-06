@@ -6,7 +6,7 @@
 /*   By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 17:27:16 by hkim2             #+#    #+#             */
-/*   Updated: 2022/03/05 17:49:24 by hkim2            ###   ########.fr       */
+/*   Updated: 2022/03/06 18:20:19 by hkim2            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	**split_argv(char **argv, int idx);
 //child.c
 void	read_child_process(t_pipeinfo *pipeinfo, char **argv, char **env);
 void	write_process(t_pipeinfo *pipeinfo, char **argv, char **env, int idx);
-void	child_process(t_pipeinfo *pipeinfo, char **argv, char **env, int idx);
+void	parent_process(t_pipeinfo *pipeinfo, int pid);
 
 //read_file.c
 void	read_input_file(t_pipeinfo *pipeinfo, char *path);
