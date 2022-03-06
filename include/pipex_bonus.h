@@ -6,7 +6,7 @@
 /*   By: hkim2 <hkim2@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 18:20:30 by hkim2             #+#    #+#             */
-/*   Updated: 2022/03/05 20:46:55 by hkim2            ###   ########.fr       */
+/*   Updated: 2022/03/06 17:06:25 by hkim2            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 typedef struct s_pipeinfo
 {
 	int		fd[2];
-	int		fd2[2];
 	int		r_fd;
 	int		w_fd;
 	char	**cmd_path;
@@ -45,7 +44,7 @@ char	**split_argv(char **argv, int idx);
 void	read_child_process(t_pipeinfo *pipeinfo, char **argv, char **env);
 void	write_process(t_pipeinfo *pipeinfo, char **argv, char **env, int idx);
 void	child_process(t_pipeinfo *pipeinfo, char **argv, char **env, int idx);
-void	parent_process(t_pipeinfo *pipeinfo, int pid, int argc, int idx);
+void	parent_process(t_pipeinfo *pipeinfo, int pid);
 
 //read_file.c
 void	read_input_file(t_pipeinfo *pipeinfo, char *path);
